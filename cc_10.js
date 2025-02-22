@@ -38,20 +38,36 @@ console.log(prod1.getDetails()); // Expected output
 
 // Task 3: Creating an Inventory Class
 console.log("********** Created Inventory Class **********");
-class Inventory {
+class Inventory { // Task 3
     constructor() {
       this.products = [];
       this.orders = [];
     }
-    addProduct(product) {
+    addProduct(product) { // Task 3
       this.products.push(product);
     }
-    listProducts() {
+    listProducts() { // Task 3
       this.products.forEach(product => console.log(product.getDetails()));
     }
+    placeOrder(orderId, product, quantity) { // Task 4
+        if (product.stock >= quantity) {
+          const order = new Order(orderId, product, quantity);
+          this.orders.push(order);
+        } else {
+          console.log("Insufficient stock");
+        }
+      }
+      listOrders() { // Task 4
+        this.orders.forEach(order => console.log(order.getOrderDetails()));
+      }
     }
-  const inventory = new Inventory();
+  const inventory = new Inventory(); // Task 3 
   inventory.addProduct(prod1);
   inventory.listProducts(); // Expected Output
   
-  
+// Task 4: Implementing Order Management
+console.log("********** Implemented Order Management **********");
+inventory.placeOrder(601, prod1, 2);
+inventory.listOrders();
+console.log(prod1.getDetails()); // Expected Output
+
