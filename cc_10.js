@@ -60,6 +60,14 @@ class Inventory { // Task 3
       listOrders() { // Task 4
         this.orders.forEach(order => console.log(order.getOrderDetails()));
       }
+      restockProduct(productId, quantity) { // Task 5
+        const product = this.products.find(p => p.id === productId);
+        if (product) {
+          product.stock += quantity; 
+        } else {
+            console.log("Product not found");
+          }
+      }
     }
   const inventory = new Inventory(); // Task 3 
   inventory.addProduct(prod1);
@@ -71,3 +79,7 @@ inventory.placeOrder(601, prod1, 2);
 inventory.listOrders();
 console.log(prod1.getDetails()); // Expected Output
 
+// Task 5: Implementing Product Restocking
+console.log("********** Implemented Product Restocking **********");
+inventory.restockProduct(101, 5);
+console.log(prod1.getDetails()); // Expected Output
