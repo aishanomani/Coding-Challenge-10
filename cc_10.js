@@ -19,5 +19,20 @@ console.log(prod1.getDetails()); //Expected Output
 prod1.updateStock(3);
 console.log(prod1.getDetails()); //Expected Output
 
-
+// Task 2: Creating an Order Class
+console.log("********** Created Order Class **********");
+class Order { 
+    constructor(orderId, product, quantity) { 
+        this.orderId = orderId;
+        this.product = product;
+        this.quantity = quantity;
+        this.product.updateStock(this.quantity);
+    };
+    getOrderDetails() { 
+        return `Order ID: ${this.orderId}, Product: ${this.product.name}, Quantity: ${this.quantity}, Total Price: $${this.product.price * this.quantity}`; 
+    };
+};
+const order1 = new Order(501, prod1, 2); 
+console.log(order1.getOrderDetails()); // Expected Output
+console.log(prod1.getDetails()); // Expected output
 
